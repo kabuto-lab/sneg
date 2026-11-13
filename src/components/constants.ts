@@ -45,6 +45,14 @@ export const SALON_PHOTOS = [
     "/salons/vanilia/5-2.avif",
     "/salons/vanilia/6-2.avif",
   ],
+  [
+    "/salons/nebesa/1.avif",
+    "/salons/nebesa/2.avif",
+    "/salons/nebesa/3.avif",
+    "/salons/nebesa/4.avif",
+    "/salons/nebesa/5.avif",
+    "/salons/nebesa/6.avif",
+  ],
 ];
 
 export const OFFER_PHOTOS = [

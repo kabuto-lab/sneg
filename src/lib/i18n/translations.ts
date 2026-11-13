@@ -270,6 +270,12 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
           body: "Ванилия - трёхэтажное заведение с апартаментами от стандартных до VIP. На входе громкая музыка, ведь здесь никогда не спят и рады каждому! Девушек, как и вариантов отдыха, очень много. Вкусные кальяны и непередаваемая атмосфера. 3 индивидуальных хаммама и 1 большой для весёлой шумной компании гостей (до 15 человек). Для вашего удобства есть парковка. Открыты 24 часа.",
           address: "Лучников переулок, 7/4с5",
         },
+        {
+          label: "Небеса SPA",
+          name: "Небеса SPA",
+          body: "Небеса SPA — салон у метро Бауманская: красивые девушки, роскошная атмосфера и сервис под настроение — от мягкого релакса до ярких сценариев. Смежные комнаты для пар и компании, гидромассажные ванны, продуманные интерьеры и полная конфиденциальность. Работаем по записи: пн–чт с 21:00, пт–вс круглосуточно. Ждём вас!",
+          address: "улица Фридриха Энгельса, 19",
+        },
       ],
     },
     footer: {
@@ -470,6 +476,12 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
           body: "Vanilia is a three-storey venue with suites ranging from standard to VIP. Loud music greets you at the door, because here the party never sleeps and everyone is welcome! There's no shortage of girls or ways to unwind. Delicious hookahs and an unforgettable atmosphere. 3 individual hammams plus 1 large one for a lively group of guests (up to 15 people). Parking available for your convenience. Open 24 hours.",
           address: "Luchnikov Lane, 7/4 building 5, Moscow",
         },
+        {
+          label: "Nebesa SPA",
+          name: "Nebesa SPA",
+          body: "Nebesa SPA is near Baumanskaya metro: beautiful girls, a luxurious atmosphere and programs tailored to your mood — from soft relax to brighter scenarios. Adjoining rooms for couples and groups, hydro-massage baths, carefully designed interiors and full confidentiality. By appointment: Mon–Thu from 21:00, Fri–Sun around the clock. We look forward to seeing you!",
+          address: "Friedrich Engels St. 19, Moscow",
+        },
       ],
     },
     footer: {
@@ -669,6 +681,12 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
           name: "Vanilia",
           body: "Vanilia是一栋三层场所，房型从标准间到VIP套房一应俱全。刚进门就能听到动感音乐——这里派对永不停歇，欢迎每一位客人！女孩众多，放松方式也丰富多样。美味水烟与难忘氛围相得益彰。设有3间独立土耳其浴室，另有1间大型浴室可供热闹的团体客人（最多15人）使用。设有停车场，方便您的出行。24小时营业。",
           address: "Luchnikov巷7/4号5栋，莫斯科",
+        },
+        {
+          label: "Nebesa SPA",
+          name: "Nebesa SPA",
+          body: "Nebesa SPA位于鲍曼站附近：美丽的女孩、奢华氛围，以及按心情定制的项目——从柔和放松到更精彩的场景。为情侣与团体准备的相邻房间、水疗按摩浴缸、精心设计的空间与完全保密。需预约：周一至周四自21:00起，周五至周日全天营业。恭候您的光临！",
+          address: "弗里德里希·恩格斯大街19号，莫斯科",
         },
       ],
     },

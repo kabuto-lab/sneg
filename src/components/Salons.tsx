@@ -58,7 +58,7 @@ export const Salons: FC = () => {
         {t.salons.heading}
       </h2>
 
-      <div className="mx-auto mb-10 flex max-w-225 items-center justify-center gap-4 border-b border-foreground/10 sm:gap-6 md:gap-8">
+      <div className="mx-auto mb-10 flex max-w-225 flex-wrap items-center justify-center gap-x-4 gap-y-1 border-b border-foreground/10 sm:gap-x-6 md:gap-x-8">
         {SALONS.map((s, i) => (
           <button
             key={s.label}
