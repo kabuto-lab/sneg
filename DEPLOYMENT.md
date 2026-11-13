@@ -13,6 +13,8 @@ https://snegurochkimoscow.com. Домены `snegurochkimoscow.ru`,
 ## Разработка
 
 Нужны Node.js 22 и Corepack. Версия Yarn закреплена в `package.json`.
+Production-сборка использует Webpack: исходная команда Turbopack в Next.js 16.3.6
+падала при обработке `next/font/google` для Cormorant Garamond на VPS.
 
 ```powershell
 corepack yarn install --frozen-lockfile

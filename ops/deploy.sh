@@ -50,18 +50,18 @@ if [[ ! -f "$RELEASE/.release-ready" ]]; then
     git -C "$ROOT/repository" archive "$REVISION" | tar -x -C "$RELEASE"
     cd "$RELEASE"
     NODE_ENV=development corepack yarn install --frozen-lockfile --non-interactive
-    NODE_ENV=production corepack yarn build
+    NODE_ENV=production corepack yarn build 2>&1 | tee "$RELEASE/build.log"
     printf '%s\n' "$REVISION" > "$RELEASE/RELEASE_COMMIT"
     PROBE_PORT=$(python3 -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1",0)); print(s.getsockname()[1]); s.close()')
     NODE_ENV=production node node_modules/next/dist/bin/next start -H 127.0.0.1 -p "$PROBE_PORT" > "$RELEASE/probe.log" 2>&1 &
     PROBE_PID=$!
     for attempt in $(seq 1 40); do
-        if curl -fsS "http://127.0.0.1:$PROBE_PORT/" -o /dev/null 2>/dev/null; then break; fi
+        if curl --max-time 10 -fsS "http://127.0.0.1:$PROBE_PORT/" -o /dev/null 2>/dev/null; then break; fi
         kill -0 "$PROBE_PID"
         sleep 1
     done
     for path in / /vacancies /snegurochka-white.svg /hero/magnific_6AXn595iJO.avif; do
-        curl -fsS -H 'Host: snegurochkimoscow.com' "http://127.0.0.1:$PROBE_PORT$path" -o /dev/null
+        curl --max-time 15 -fsS -H 'Host: snegurochkimoscow.com' "http://127.0.0.1:$PROBE_PORT$path" -o /dev/null
     done
     cleanup
     PROBE_PID=
@@ -80,12 +80,12 @@ install -m 644 "$RELEASE/ops/server/snegurochka-next.service" /etc/systemd/syste
 systemctl daemon-reload
 systemctl restart snegurochka-next.service
 for attempt in $(seq 1 40); do
-    if curl -fsS http://127.0.0.1:5134/ -o /dev/null 2>/dev/null; then break; fi
+    if curl --max-time 10 -fsS http://127.0.0.1:5134/ -o /dev/null 2>/dev/null; then break; fi
     sleep 1
 done
 systemctl is-active --quiet snegurochka-next.service
 for path in / /vacancies /snegurochka-white.svg; do
-    curl -fsS -H 'Host: snegurochkimoscow.com' "http://127.0.0.1:5134$path" -o /dev/null
+    curl --max-time 15 -fsS -H 'Host: snegurochkimoscow.com' "http://127.0.0.1:5134$path" -o /dev/null
 done
 ACTIVATED=0
 printf 'DEPLOYED %s\nCURRENT %s\nBACKUP %s\n' "$REVISION" "$RELEASE" "$BACKUP"
