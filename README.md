@@ -1,4 +1,19 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Снегурочки Москва
+
+Репозиторий: https://github.com/kabuto-lab/sneg. Основной домен:
+https://snegurochkimoscow.com. Домены `.ru` и `www` перенаправляются на основной.
+
+Рабочая версия перенесена из `meremarina51-ctrl/snegurochka` с сохранением истории,
+включая исправления до `7412b4164d8f7432bcbe0494b80f2c86486f435f`.
+Локальный прототип со стеклом и шарами в этот репозиторий не включён.
+
+Разработка: Node.js 22, `corepack yarn install --frozen-lockfile`, затем
+`corepack yarn dev`. Версия Yarn закреплена в `package.json`.
+
+Выкладка на Zomro после коммита: `git push origin main`, затем
+`.\ops\deploy.ps1`. [Устройство выкладки и доменов](DEPLOYMENT.md).
+
+Ниже — исходная справка Next.js.
 
 ## Getting Started
 
