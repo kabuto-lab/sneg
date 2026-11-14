@@ -4,6 +4,7 @@ import datetime
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import time
@@ -12,6 +13,26 @@ import urllib.request
 
 def run(*args):
     return subprocess.run(args, check=True, capture_output=True, text=True).stdout.strip()
+
+
+def check_verification_files():
+    root = Path('/var/www/verify/snegurochkimoscow.com')
+    files = [p for p in sorted(root.glob('yandex_*.html'))
+             if p.is_file() and re.fullmatch(r'yandex_[0-9a-f]+\.html', p.name)]
+    if not files:
+        raise RuntimeError('No Yandex verification files found for snegurochkimoscow.com')
+    for path in files:
+        expected = path.read_bytes()
+        for host in ('snegurochkimoscow.com', 'www.snegurochkimoscow.com'):
+            for scheme, port in (('http', 80), ('https', 443)):
+                url = f'{scheme}://{host}/{path.name}'
+                response = subprocess.run(
+                    ('curl', '--noproxy', '*', '--max-time', '15', '--resolve',
+                     f'{host}:{port}:127.0.0.1', '-sS', '-w', '\n%{http_code}', url),
+                    check=True, capture_output=True,
+                ).stdout
+                body, status = response.rsplit(b'\n', 1)
+                assert status == b'200' and body == expected, (url, status.decode())
 
 
 def check_hosts():
@@ -27,6 +48,7 @@ def check_hosts():
                      'snegurochkimoscow.com:443:127.0.0.1', '-sS', '-o', '/dev/null',
                      '-w', '%{http_code}', 'https://snegurochkimoscow.com' + path)
         assert result == '200', (path, result)
+    check_verification_files()
 
 
 def main():
